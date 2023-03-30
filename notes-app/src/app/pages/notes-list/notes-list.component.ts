@@ -17,6 +17,7 @@ export class NotesListComponent implements OnInit{
   ngOnInit(): void {
     //we want to retrieve all notes from notes service
     this.notes = this.notesService.getAll();
+    console.log("notes array: ", this.notes);
   }
 
 }
