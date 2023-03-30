@@ -54,7 +54,12 @@
   opacity: 0;
 
   &:hover {
-    background-color: darken($light-red, 5%);
+    background-color: darken($light-red, 3%);
+  }
+
+  //on click
+  &:active {
+    background-color: darken($light-red, 7%);
   }
 
 }
