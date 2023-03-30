@@ -25,3 +25,13 @@ $control-border-width: 2px;
 $input-border-color: transparent;
 $input-background-color: #F3F5FA;
 $input-shadow: none;
+
+
+/*  Global Syles  */
+html, body {
+  height: 100%;
+
+  //set the default font-size to 18px
+  font-size: 18px !important;
+  overflow: hidden !important;
+}
