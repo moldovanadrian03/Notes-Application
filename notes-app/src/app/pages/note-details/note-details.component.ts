@@ -35,9 +35,14 @@ export class NoteDetailsComponent implements OnInit{
   onSubmit(form: NgForm) {
     console.log(form);
 
-    //save the notes
-    this.notesService.add(form.value);
-    this.router.navigateByUrl('/');
+    if(this.new) {
+      //we should save the note and go back to the notes-list-component
+      this.notesService.add(form.value);
+      this.router.navigateByUrl('/');
+    } else {
+      //we update the note
+      this.notesService.update(this.noteId, form.value.title, form.value.body);
+    }
   }
   cancel() {
     //this function route the cancel button to the notes-list-component
