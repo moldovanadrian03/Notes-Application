@@ -17,10 +17,11 @@ export class NoteDetailsComponent implements OnInit{
   constructor(private notesService: NotesService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-      this.note = new Note();
 
       //we want to find out if we are creating a new note or editing an existing one
       this.route.params.subscribe((params: Params) => {
+        this.note = new Note();
+
         if(params['id']) {
           this.note = this.notesService.get(params['id']);
           this.noteId = params['id'];
@@ -38,11 +39,11 @@ export class NoteDetailsComponent implements OnInit{
     if(this.new) {
       //we should save the note and go back to the notes-list-component
       this.notesService.add(form.value);
-      this.router.navigateByUrl('/');
     } else {
-      //we update the note
+      //we update the note and go back to the notes-list-component
       this.notesService.update(this.noteId, form.value.title, form.value.body);
     }
+    this.router.navigateByUrl('/');
   }
   cancel() {
     //this function route the cancel button to the notes-list-component
