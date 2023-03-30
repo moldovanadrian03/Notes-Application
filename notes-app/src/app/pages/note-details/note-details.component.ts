@@ -24,4 +24,8 @@ export class NoteDetailsComponent implements OnInit{
     this.notesService.add(form.value);
     this.router.navigateByUrl('/');
   }
+  cancel() {
+    //this function route the cancel button to the notes-list-component
+    this.router.navigateByUrl('/');
+  }
 }
