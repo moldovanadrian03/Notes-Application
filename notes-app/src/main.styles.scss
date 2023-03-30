@@ -15,15 +15,13 @@ $light: #FAFCFF;
 
 // Update Bulma's global variables
 $family-sans-serif: "Nunito", sans-serif;
-$grey-dark: $brown;
-$grey-light: $beige-light;
 $primary: $purple;
-$link: $pink;
-$widescreen-enabled: false;
-$fullhd-enabled: false;
+$link: $blue;
+
 
 // Update some of Bulma's component variables
-$body-background-color: blue;
+$body-background-color: $light;
 $control-border-width: 2px;
 $input-border-color: transparent;
+$input-background-color: #F3F5FA;
 $input-shadow: none;
