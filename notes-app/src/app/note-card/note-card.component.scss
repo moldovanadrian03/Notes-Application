@@ -1,5 +1,8 @@
 @import '../../main.styles.scss';
 .note-card-container {
+  //this will move the button to the note
+  position: relative;
+
   background: white;
   border-radius: 5px;
 
@@ -33,6 +36,9 @@
   width: 34px;
 
   background-color: $light-red;
+  background-image: url('../../assets/delete_icon.svg');
+  background-repeat: no-repeat;
+  background-position: center;
 
   border-radius: 5px;
 
