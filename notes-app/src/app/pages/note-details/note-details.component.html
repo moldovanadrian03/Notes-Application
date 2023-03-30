@@ -5,14 +5,14 @@
     <div class="field">
       <label class="label">Title</label>
       <div class="control">
-        <input type = "text" class="input" required >
+        <input type = "text" name="title" [ngModel]="note.title" class="input" required >
       </div>
     </div>
     <br>
     <div class="field">
       <label class="label">Body</label>
       <div class="control">
-        <textarea class="textarea"></textarea>
+        <textarea class="textarea" name="body" [ngModel]="note.body"></textarea>
       </div>
     </div>
 
