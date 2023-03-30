@@ -53,4 +53,8 @@
   //the button is hidden by default
   opacity: 0;
 
+  &:hover {
+    background-color: darken($light-red, 5%);
+  }
+
 }
