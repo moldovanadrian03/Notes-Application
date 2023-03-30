@@ -23,3 +23,17 @@
   }
 
 }
+.x-button {
+  position: absolute;
+  //12 px from the top and 12px from the right side
+  top: 12px;
+  right: 12px;
+
+  height: 34px;
+  width: 34px;
+
+  background-color: $light-red;
+
+  border-radius: 5px;
+
+}
