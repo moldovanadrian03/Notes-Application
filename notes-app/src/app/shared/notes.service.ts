@@ -16,6 +16,9 @@ export class NotesService {
   getId(note: Note) {
     this.notes.indexOf(note);
   }
+  getAll() {
+    return this.notes;
+  }
   add(note: Note) {
     //this method will add a note to the notes array and return the id of the note
     //where the id = index
