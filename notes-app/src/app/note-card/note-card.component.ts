@@ -19,12 +19,15 @@ export class NoteCardComponent implements OnInit{
     let style = window.getComputedStyle(this.bodyText.nativeElement, null);
     let viewableHeight = (style.getPropertyValue("height"), 72);
 
+    console.log("viewable height is: ", viewableHeight);
     if(this.bodyText.nativeElement.scrollHeight > viewableHeight) {
       //if there is no text overflow,  show  the fade out truncator
       this.renderer.setStyle(this.truncator.nativeElement, 'display', 'block');
+      console.log("We have text overflow", this.truncator);
     }else {
       //else (there is a text overFlow),  hide  the fade out truncator
       this.renderer.setStyle(this.truncator.nativeElement, 'display', 'none');
+      console.log("We don't have text overflow", this.truncator);
     }
   }
 }
