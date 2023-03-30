@@ -1,11 +1,11 @@
 <div class="form-container">
 
-  <form #noteForm = "ngForm">
+  <form #noteForm = "ngForm" (ngSubmit)="onSubmit(noteForm)">
 
     <div class="field">
       <label class="label">Title</label>
       <div class="control">
-        <input type = "text" class="input">
+        <input type = "text" class="input" required >
       </div>
     </div>
     <br>

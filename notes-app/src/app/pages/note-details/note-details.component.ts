@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-note-details',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class NoteDetailsComponent {
 
+  onSubmit(form: NgForm) {
+    console.log(form);
+  }
 }
