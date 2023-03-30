@@ -34,12 +34,17 @@
     .note-card-body {
       position: relative;
 
+      color: #555;
+
       //the max height before text is truncated
       max-height: 80px;
       overflow: hidden;
 
       .fade-out-truncation {
         position: absolute;
+
+        //make posibile selecting the text that is truncated
+        pointer-events: none;
 
         bottom: 0;
 
