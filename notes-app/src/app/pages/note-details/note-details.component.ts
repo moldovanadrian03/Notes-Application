@@ -34,18 +34,21 @@ export class NoteDetailsComponent implements OnInit{
       })
   }
   onSubmit(form: NgForm) {
-    console.log(form);
-
     if(this.new) {
+
       //we should save the note and go back to the notes-list-component
       this.notesService.add(form.value);
+      console.log("Note: ",this.noteId,  "was created.");
     } else {
+
       //we update the note and go back to the notes-list-component
       this.notesService.update(this.noteId, form.value.title, form.value.body);
+      console.log("Note: ",this.noteId,  "was updated.");
     }
     this.router.navigateByUrl('/');
   }
   cancel() {
+
     //this function route the cancel button to the notes-list-component
     this.router.navigateByUrl('/');
   }

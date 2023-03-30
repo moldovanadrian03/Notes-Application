@@ -9,6 +9,7 @@ export class NoteCardComponent implements OnInit{
 
   @Input() title: string;
   @Input() body: string;
+  @Input() link: string;
 
   @ViewChild('truncator', {static: true}) truncator: ElementRef<HTMLElement>;
   @ViewChild('bodyText', {static: true}) bodyText: ElementRef<HTMLElement>;
