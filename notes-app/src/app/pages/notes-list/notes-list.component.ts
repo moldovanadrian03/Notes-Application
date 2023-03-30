@@ -20,4 +20,9 @@ export class NotesListComponent implements OnInit{
     console.log("notes array: ", this.notes);
   }
 
+  deleteNote(id: number) {
+    this.notesService.delete(id);
+    console.log("Note: ", id, "is deleted.");
+  }
+
 }
