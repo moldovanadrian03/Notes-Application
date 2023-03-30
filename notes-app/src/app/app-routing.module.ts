@@ -8,6 +8,7 @@ import { NoteDetailsComponent } from './pages/note-details/note-details.componen
 const routes: Routes = [
   { path: '', component: MainLayoutComponent, children:[
     { path: '', component: NotesListComponent },
+    { path: 'new', component: NoteDetailsComponent},
     { path: ':id', component: NoteDetailsComponent }
   ] }
 ]
@@ -17,6 +18,9 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forRoot(routes)
+  ],
+  exports: [
+    RouterModule
   ]
 })
 export class AppRoutingModule {

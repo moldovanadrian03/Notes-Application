@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Note } from 'src/app/shared/note.model';
 import { NotesService } from 'src/app/shared/notes.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-notes-list',
@@ -11,7 +12,7 @@ export class NotesListComponent implements OnInit{
 
   notes: Note[] = new Array<Note>();
 
-  constructor(private notesService: NotesService) {}
+  constructor(private notesService: NotesService, private route: Router) {}
 
   ngOnInit(): void {
     //we want to retrieve all notes from notes service

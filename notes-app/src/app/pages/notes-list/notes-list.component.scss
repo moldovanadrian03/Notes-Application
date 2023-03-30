@@ -12,6 +12,9 @@
 
 .notes-list {
   margin-top: 35px;
+
+  margin-bottom: 70px; //this will prevent overlapping the content with the add button
+                      //because the button has a position: fixed property
 }
 
 app-note-card {
