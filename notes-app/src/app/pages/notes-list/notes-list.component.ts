@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Note } from 'src/app/shared/note.model';
 import { NotesService } from 'src/app/shared/notes.service';
 import { Route, Router } from '@angular/router';
-import { transition, trigger,style, animate } from '@angular/animations';
+import { transition, trigger,style, animate, query, stagger } from '@angular/animations';
 
 @Component({
   selector: 'app-notes-list',
@@ -61,6 +61,21 @@ import { transition, trigger,style, animate } from '@angular/animations';
           'margin-bottom': 0,
           display: 'block',
         }))
+      ])
+    ]),
+    trigger('listAnim', [
+      transition('* => *', [ //any state to any state
+        query(':enter', [
+          style({
+            opacity: 0,
+            height: 0
+          }),
+          stagger(100, [ //delay between each animation
+            animate('0.2s ease')
+          ])
+        ], {
+          optional: true
+        })
       ])
     ])
   ]
