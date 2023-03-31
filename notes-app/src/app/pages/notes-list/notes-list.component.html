@@ -18,6 +18,7 @@
       *ngFor="let note of notes; index as i"
       [link]="i.toString()"
       (delete)="deleteNote(i)"
+      [@itemAnim]
       [title]="note.title"
       [body]="note.body"></app-note-card>
    </div>

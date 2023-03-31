@@ -2,11 +2,42 @@ import { Component, OnInit } from '@angular/core';
 import { Note } from 'src/app/shared/note.model';
 import { NotesService } from 'src/app/shared/notes.service';
 import { Route, Router } from '@angular/router';
+import { transition, trigger,style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-notes-list',
   templateUrl: './notes-list.component.html',
-  styleUrls: ['./notes-list.component.scss']
+  styleUrls: ['./notes-list.component.scss'],
+  animations: [
+    trigger('itemAnim', [
+      //ENTRY ANIMATION
+      transition('void => *', [
+        //INITIAL STATE
+        style({
+          height: 0,
+          opacity: 0,
+          transform: 'scale(0.85)',
+          'margin-bottom': 0,
+
+          paddingTop: 0,
+          paddingBottom: 0,
+          paddingLeft: 0,
+          paddingRight: 0,
+
+        }),
+        //we first want to animate the spacing (which includes height and margin)
+        animate('50ms', style({
+          height: '*',
+          'margin-bottom': '*',
+          paddingTop: '*',
+          paddingBottom: '*',
+          paddingLeft: '*',
+          paddingRight: '*',
+        })),
+        animate(100)
+      ])
+    ])
+  ]
 })
 export class NotesListComponent implements OnInit{
 
