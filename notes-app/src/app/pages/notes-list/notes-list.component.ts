@@ -136,7 +136,7 @@ export class NotesListComponent implements OnInit{
     query = query.toLowerCase().trim();
 
     let relevantNotes = this.notes.filter(note => {
-      if(note.title && note.body.toLowerCase().includes(query) || note.title.toLowerCase().includes(query)){
+      if(note.title && note.title.toLowerCase().includes(query)){
         return true;
       }
       if(note.body && note.body.toLowerCase().includes(query)){
