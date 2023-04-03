@@ -83,6 +83,7 @@ import { transition, trigger,style, animate, query, stagger } from '@angular/ani
 export class NotesListComponent implements OnInit{
 
   notes: Note[] = new Array<Note>();
+  filteredNotes: Note[] = new Array<Note>();
 
   constructor(private notesService: NotesService, private route: Router) {}
 
@@ -90,6 +91,9 @@ export class NotesListComponent implements OnInit{
     //we want to retrieve all notes from notes service
     this.notes = this.notesService.getAll();
     console.log("notes array: ", this.notes);
+
+    this.filteredNotes = this.notes;
+    console.log("filteredNotes array: ", this.filteredNotes);
   }
 
   deleteNote(id: number) {
@@ -97,4 +101,49 @@ export class NotesListComponent implements OnInit{
     console.log("Note: ", id, "is deleted.");
   }
 
+  filter(query: string) {
+    query = query.toLowerCase().trim();
+
+    let allResults: Note[] = new Array<Note>();
+
+    //split up the search query intro individual words
+    let words: string[] = query.split(' ');
+    //remove duplicates
+    words = this.removeDuplicates(words);
+    //compile all relevant results into the allResults array
+    words.forEach(word => {
+      let results: Note[] = this.relevantNotes(word);
+      //append results to the allResults array
+      allResults = [...allResults, ...results];
+   });
+    // allResults will contain duplicate notes
+    //because a particular note can be the result of many search terms
+    //but we don't want to show the same note multiple times on the UI
+    //so we first must remove the duplicates
+    let uniqueResults = this.removeDuplicates(allResults);
+    this.filteredNotes = uniqueResults;
+  }
+
+  removeDuplicates(arr: Array<any>): Array<any> {
+    let uniqueResults: Set<any> = new Set<any>(); // we use sets because sets have unique values
+    //loop throw the input array and add items to the set
+    arr.forEach(e => uniqueResults.add(e));
+
+    return Array.from(uniqueResults);
+  }
+
+  relevantNotes(query: string): Array<Note> {
+    query = query.toLowerCase().trim();
+
+    let relevantNotes = this.notes.filter(note => {
+      if(note.title && note.body.toLowerCase().includes(query) || note.title.toLowerCase().includes(query)){
+        return true;
+      }
+      if(note.body && note.body.toLowerCase().includes(query)){
+        return true;
+      }
+      return false;
+    })
+    return relevantNotes;
+  }
 }
