@@ -122,6 +122,9 @@ export class NotesListComponent implements OnInit{
     //so we first must remove the duplicates
     let uniqueResults = this.removeDuplicates(allResults);
     this.filteredNotes = uniqueResults;
+
+    //now sort by relevancy
+    this.sortByRelevancy(allResults);
   }
 
   removeDuplicates(arr: Array<any>): Array<any> {
@@ -145,5 +148,33 @@ export class NotesListComponent implements OnInit{
       return false;
     })
     return relevantNotes;
+  }
+
+  sortByRelevancy(searchResults: Note[]) {
+    //this method will calculate the relevancy of a note
+    //base on the number of times that note appear in the search results
+
+    let noteCountObject: Object = {};// format key:value => NoteId: number (note object id: count)
+
+    searchResults.forEach(note => {
+      let noteId: number = this.notesService.getId(note);
+
+      if(noteCountObject[noteId]) {
+        noteCountObject[noteId] += 1;
+      }else {
+        noteCountObject[noteId] = 1;
+      }
+    })
+
+    this.filteredNotes = this.filteredNotes.sort((a: Note, b: Note) => {
+      let aId = this.notesService.getId(a);
+      let bId = this.notesService.getId(b);
+
+      let aCount = noteCountObject[aId];
+      let bCount = noteCountObject[bId];
+
+      return bCount - aCount;
+    });
+
   }
 }

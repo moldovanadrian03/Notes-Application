@@ -14,7 +14,7 @@ export class NotesService {
     return this.notes[id];
   }
   getId(note: Note) {
-    this.notes.indexOf(note);
+    return this.notes.indexOf(note);
   }
   getAll() {
     return this.notes;
