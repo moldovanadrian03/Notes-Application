@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Note } from 'src/app/shared/note.model';
 import { NotesService } from 'src/app/shared/notes.service';
 import { Route, Router } from '@angular/router';
@@ -85,6 +85,8 @@ export class NotesListComponent implements OnInit{
   notes: Note[] = new Array<Note>();
   filteredNotes: Note[] = new Array<Note>();
 
+  @ViewChild('filterInput') filterInputElRef: ElementRef<HTMLInputElement>;
+
   constructor(private notesService: NotesService, private route: Router) {}
 
   ngOnInit(): void {
@@ -92,13 +94,22 @@ export class NotesListComponent implements OnInit{
     this.notes = this.notesService.getAll();
     console.log("notes array: ", this.notes);
 
-    this.filteredNotes = this.notesService.getAll();
+    // this.filteredNotes = this.notesService.getAll();
+    this.filter('');
     console.log("filteredNotes array: ", this.filteredNotes);
   }
 
-  deleteNote(id: number) {
-    this.notesService.delete(id);
-    console.log("Note: ", id, "is deleted.");
+  deleteNote(note: Note) {
+    let noteId = this.notesService.getId(note);
+
+    this.notesService.delete(noteId);
+    this.filter(this.filterInputElRef.nativeElement.value);
+    console.log("Note: ", noteId, "is deleted.");
+  }
+
+  generateNoteUrl(note: Note) {
+    let noteId = this.notesService.getId(note);
+    return noteId;
   }
 
   filter(query: string) {
