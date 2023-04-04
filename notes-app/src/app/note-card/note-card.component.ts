@@ -16,6 +16,8 @@ export class NoteCardComponent implements OnInit{
   @ViewChild('truncator', {static: true}) truncator: ElementRef<HTMLElement>;
   @ViewChild('bodyText', {static: true}) bodyText: ElementRef<HTMLElement>;
 
+  storedTheme: string = localStorage.getItem('note-card-container');
+
   constructor(private renderer: Renderer2) {
 
   }
@@ -25,7 +27,8 @@ export class NoteCardComponent implements OnInit{
 
     let style = window.getComputedStyle(this.bodyText.nativeElement, null);
     let viewableHeight = (style.getPropertyValue("height"), 72);
-
+    let color = this.storedTheme;
+    console.log("Card Theme: ", color);
     console.log("viewable height is: ", viewableHeight);
     if(this.bodyText.nativeElement.scrollHeight > viewableHeight) {
       //if there is no text overflow,  show  the fade out truncator
@@ -36,6 +39,12 @@ export class NoteCardComponent implements OnInit{
       this.renderer.setStyle(this.truncator.nativeElement, 'display', 'none');
       console.log("We don't have text overflow", this.truncator);
     }
+  }
+
+  setThemeColor(theme) {
+    localStorage.setItem('note-card-container', theme);
+    this.storedTheme = localStorage.getItem('note-card-container');
+    console.log("Theme color: ", theme);
   }
 
   onXButtonClick() {

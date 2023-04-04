@@ -5,7 +5,7 @@
 
   width: 300px;
 
-  margin: 5px;
+  margin: 20px;
 
   background: white;
   border-radius: 5px;
@@ -28,7 +28,18 @@
   .note-card-content {
     padding: 25px;
 
+    .header-container {
+      img {
+        border: 3px solid $purple;
+        box-shadow: 0px 0px 0px 4px rgba($color: $purple, $alpha: 0.4);
+
+        border-radius: 5px;
+      }
+    }
+
     .note-card-title {
+      margin: 5px;
+
       font-size: 22px;
       font-weight: bold;
 
@@ -36,6 +47,8 @@
     }
 
     .note-card-body {
+      margin: 5px;
+
       position: relative;
 
       color: #555;
@@ -47,7 +60,7 @@
       .fade-out-truncation {
         position: absolute;
 
-        //make posibile selecting the text that is truncated
+        //make possible selecting the text that is truncated
         pointer-events: none;
 
         bottom: 0;
@@ -60,6 +73,60 @@
     }
   }
 
+}
+.theme-color {
+  max-width: 250px;
+  margin: 0 auto;
+  text-align: right;
+  padding: 3px 0;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  div {
+    cursor: pointer;
+
+    width: 20px;
+    height: 20px;
+
+    margin: 2px 6px;
+    border: 1px solid #000;
+    border-radius: 5px;
+
+    opacity: 0.5;
+    &.active {
+      opacity: 1;
+    }
+
+  }
+  #theme-white {
+    background-color: rgba(238, 238, 238, 0.9);
+  }
+  #theme-blue {
+    background-color: #1e41c1;
+  }
+  #theme-orange {
+    background-color: #b64b1e;
+  }
+  #theme-purple {
+    background-color: $purple;
+  }
+  #theme-green {
+    background-color: #5faf3b;
+  }
+  #theme-black {
+    background-color: black;
+  }
+}
+
+.progress-bar {
+  opacity: 0.5;
+  background-color: #000000;
+  border-radius: 5px;
+  &:hover {
+    opacity: 1;
+  }
 }
 .x-button {
   position: absolute;
@@ -92,4 +159,166 @@
     background-color: darken($light-red, 7%);
   }
 
+}
+
+.note-card-container.theme-white {
+  background-color: #eee;
+  &:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 0px 4px rgba($color: $purple, $alpha: 0.4);
+
+    .x-button {
+      opacity: 1;
+      transform: scale(1);
+
+      transition-delay: 0.35s;
+    }
+  }
+  .header-container {
+    img {
+      border: 3px solid $purple;
+      box-shadow: 0px 0px 0px 4px rgba($color: $purple, $alpha: 0.4);
+
+      border-radius: 5px;
+    }
+  }
+  .note-card-title {
+    color: $purple !important;
+  }
+  .note-card-body {
+    color:rgb(55, 53, 53) !important;
+  }
+
+}
+.note-card-container.theme-blue {
+  background-color: #6699cc;
+  &:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 0px 4px rgba($color: black, $alpha: 0.5);
+
+    .x-button {
+      opacity: 1;
+      transform: scale(1);
+
+      transition-delay: 0.35s;
+    }
+  }
+  .header-container {
+    img {
+      border: 3px solid black !important;
+      box-shadow: 0px 0px 0px 4px rgba($color: black, $alpha: 0.4) !important;
+
+      border-radius: 5px;
+    }
+  }
+  .note-card-title {
+    color: rgb(55, 53, 53) !important;
+  }
+  .note-card-body {
+    color: rgba(white, 0.8) !important;
+  }
+}
+.note-card-container.theme-orange {
+  background-color: #ee9f27;
+  &:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 0px 4px rgba($color: black, $alpha: 0.5);
+
+    .x-button {
+      opacity: 1;
+      transform: scale(1);
+
+      transition-delay: 0.35s;
+    }
+  }
+  .header-container {
+    img {
+      border: 3px solid black !important;
+      box-shadow: 0px 0px 0px 4px rgba($color: black, $alpha: 0.4) !important;
+
+      border-radius: 5px;
+    }
+  }
+  .note-card-title {
+    color: rgb(55, 53, 53) !important;
+  }
+  .note-card-body {
+    color: rgba(white, 0.8) !important;
+  }
+}
+.note-card-container.theme-purple {
+  background-color: $purple;
+  &:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 0px 4px rgba($color: black, $alpha: 0.5);
+
+    .x-button {
+      opacity: 1;
+      transform: scale(1);
+
+      transition-delay: 0.35s;
+    }
+  }
+  .header-container {
+    img {
+      border: 3px solid black !important;
+      box-shadow: 0px 0px 0px 4px rgba($color: black, $alpha: 0.4) !important;
+
+      border-radius: 5px;
+    }
+  }
+  .note-card-title {
+    color: rgb(55, 53, 53) !important;
+  }
+  .note-card-body {
+    color: rgba(white, 0.8) !important;
+  }
+}
+.note-card-container.theme-green {
+  background-color: #5faf3b;
+  &:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 0px 4px rgba($color: black, $alpha: 0.5);
+
+    .x-button {
+      opacity: 1;
+      transform: scale(1);
+
+      transition-delay: 0.35s;
+    }
+  }
+  .header-container {
+    img {
+      border: 3px solid black !important;
+      box-shadow: 0px 0px 0px 4px rgba($color: black, $alpha: 0.4) !important;
+
+      border-radius: 5px;
+    }
+  }
+  .note-card-title {
+    color: rgb(55, 53, 53) !important;
+  }
+  .note-card-body {
+    color: rgba(white, 0.8) !important;
+  }
+}
+.note-card-container.theme-black {
+  background-color: #595959;
+  &:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 0px 4px rgba($color: $purple, $alpha: 0.4);
+
+    .x-button {
+      opacity: 1;
+      transform: scale(1);
+
+      transition-delay: 0.35s;
+    }
+  }
+  .note-card-title {
+    color: $purple !important;
+  }
+  .note-card-body {
+    color: rgba(white, 0.8) !important;
+  }
 }

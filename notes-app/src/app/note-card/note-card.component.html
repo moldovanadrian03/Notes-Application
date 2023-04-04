@@ -1,6 +1,9 @@
-<div #container class="note-card-container">
+<div #container class="note-card-container {{storedTheme}}">
   <a [routerLink]="link">
     <div class="note-card-content">
+      <mat-card-header class="header-container">
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+      </mat-card-header>
 
       <h1 class="note-card-title">{{ title }} </h1>
       <div #bodyText class="note-card-body">
@@ -12,7 +15,16 @@
 
     </div>
   </a>
-
+  <div class="theme-color">
+    <div id="theme-white" (click)="setThemeColor('theme-white')"></div>
+    <div id="theme-blue" (click)="setThemeColor('theme-blue')"></div>
+    <div id="theme-orange" (click)="setThemeColor('theme-orange')"></div>
+    <div id="theme-purple" (click)="setThemeColor('theme-purple')"></div>
+    <div id="theme-green" (click)="setThemeColor('theme-green')"></div>
+    <div id="theme-black" (click)="setThemeColor('theme-black')"></div>
+  </div>
+  <mat-progress-bar class="progress-bar" mode="indeterminate">
+  </mat-progress-bar>
   <div class="x-button" (click)="onXButtonClick()">
 
   </div>
