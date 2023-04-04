@@ -92,7 +92,7 @@ export class NotesListComponent implements OnInit{
     this.notes = this.notesService.getAll();
     console.log("notes array: ", this.notes);
 
-    this.filteredNotes = this.notes;
+    this.filteredNotes = this.notesService.getAll();
     console.log("filteredNotes array: ", this.filteredNotes);
   }
 
